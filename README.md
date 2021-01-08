@@ -1,2 +1,5 @@
-# ts-kmt
-Mouse trainer for kids
+# Mouse trainer for kids 🖱️
+
+simple typescript game 
+
+try it on 
