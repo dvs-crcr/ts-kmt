@@ -28,8 +28,15 @@ class App {
 
   clickHandler(circle: Circle) {
     this.task--;
-    circle.remove();
+    this.circleRemoveAnimation(circle);
+    window.setTimeout(() => {
+      circle.remove();
+    }, 100)
     this.checkTask();
+  }
+
+  circleRemoveAnimation(circle: Circle) {
+    circle.element?.classList.add('circle-remove');
   }
 
   checkTask() {
