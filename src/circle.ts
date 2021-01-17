@@ -8,8 +8,8 @@ type GameSize = {
 };
 
 export class Circle {
+  clicked: boolean = false;
   size: number = 60;
-  color: string = 'red';
   element: HTMLElement | null = null;
   colors: string[] = [
     'red',
@@ -50,15 +50,16 @@ export class Circle {
   }
 
   clickHandler(event: Event) {
-    event.preventDefault();
-    this.resources.play('click');
-    eventBus.emit('click', this);
+    if (!this.clicked) {
+      event.preventDefault();
+      this.clicked = true;
+      this.resources.play('click');
+      eventBus.emit('click', this);
+    }
   }
 
   remove() {
     this.element?.remove();
   }
-
-
 
 }
