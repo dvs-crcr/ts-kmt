@@ -25,8 +25,15 @@ var App = /** @class */ (function () {
     };
     App.prototype.clickHandler = function (circle) {
         this.task--;
-        circle.remove();
+        this.circleRemoveAnimation(circle);
+        window.setTimeout(function () {
+            circle.remove();
+        }, 100);
         this.checkTask();
+    };
+    App.prototype.circleRemoveAnimation = function (circle) {
+        var _a;
+        (_a = circle.element) === null || _a === void 0 ? void 0 : _a.classList.add('circle-remove');
     };
     App.prototype.checkTask = function () {
         if (this.task === 0) {

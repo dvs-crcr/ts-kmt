@@ -4,8 +4,8 @@ var eventBus = EventBus.getInstance();
 var Circle = /** @class */ (function () {
     function Circle(gameSize, resources) {
         this.resources = resources;
+        this.clicked = false;
         this.size = 60;
-        this.color = 'red';
         this.element = null;
         this.colors = [
             'red',
@@ -41,9 +41,12 @@ var Circle = /** @class */ (function () {
         };
     };
     Circle.prototype.clickHandler = function (event) {
-        event.preventDefault();
-        this.resources.play('click');
-        eventBus.emit('click', this);
+        if (!this.clicked) {
+            event.preventDefault();
+            this.clicked = true;
+            this.resources.play('click');
+            eventBus.emit('click', this);
+        }
     };
     Circle.prototype.remove = function () {
         var _a;
